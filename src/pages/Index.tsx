@@ -140,7 +140,7 @@ const Index = () => {
             />
           </div>
           <p className="text-gray-600 dark:text-gray-400 text-sm">
-            © 2024 Erielí Carolina Lara. All rights reserved.
+            © 2025 Erielí Carolina Lara. All rights reserved.
           </p>
         </div>
       </footer>
