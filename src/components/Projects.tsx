@@ -6,22 +6,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import adsassistant from "../assets/img/adsassistantpage.png";
-import { link } from "fs";
-
+import juliofuenmayor from "../assets/img/juliofuenma.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   const projects = [
-    {
-      title: "AdsAssistant.ai Platform",
-      description:
-        "AI-powered marketing automation platform managing $10M+ in advertising campaigns with intelligent optimization and real-time analytics.",
-      image: adsassistant,
-      tech: ["React", "OpenAI API", "Meta Ads API", "TypeScript", "SCSS"],
-      status: "Live",
-      gradient: "from-emerald-500 to-teal-500",
-      link: "https://adsassistant.ai",
-    },
     {
       title: "Agency CRM System",
       description:
@@ -33,14 +22,25 @@ const Projects = () => {
       gradient: "from-cyan-500 to-blue-500",
     },
     {
-      title: "Shopify E-commerce Store",
+      title: "AdsAssistant.ai Platform",
       description:
-        "Conversion-optimized Shopify theme development with custom liquid templates and performance enhancements.",
-      image:
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop",
-      tech: ["Shopify", "Liquid", "JavaScript", "SCSS"],
-      status: "Coming Soon",
+        "AI-powered marketing automation platform managing $10M+ in advertising campaigns with intelligent optimization and real-time analytics.",
+      image: adsassistant,
+      tech: ["React", "OpenAI API", "Meta Ads API", "TypeScript", "SCSS"],
+      status: "Live",
+      gradient: "from-emerald-500 to-teal-500",
+      link: "https://adsassistant.ai",
+    },
+
+    {
+      title: "Professional Architecture Portfolio",
+      description:
+        "Professional portfolio website for an international interior design firm.",
+      image: juliofuenmayor,
+      tech: ["WordPress", "Responsive Design", "Visual Storytelling"],
+      status: "Live",
       gradient: "from-purple-500 to-pink-500",
+      link: "https://juliofuenmayor.com/",
     },
   ];
 
