@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
-import ScrollToTop from "@/components/ScrollToTop";
-import logo from "@/assets/img/el-logo.svg"; // Adjust the path as necessary
+import Navigation from "@/components/layout/Navigation";
+import Hero from "@/components/sections/Hero";
+import Skills from "@/components/sections/Skills";
+import Projects from "@/components/sections/Projects";
+import Contact from "@/components/sections/Contact";
+import ScrollToTop from "@/components/layout/ScrollToTop";
+import { ASSETS, ANIMATION_CONFIG, SCROLL_CONFIG } from "@/lib/constants";
+import { navigationItems } from "@/data/portfolio";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Index = () => {
-  const [darkMode, setDarkMode] = useState(true);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [darkMode, setDarkMode] = useState<boolean>(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
 
   useEffect(() => {
     // Dark mode setup with smooth transitions
@@ -38,7 +39,7 @@ const Index = () => {
       setShowScrollTop(scrolled > windowHeight);
 
       // Update active section
-      const sections = ["home", "about", "skills", "projects", "contact"];
+      const sections = navigationItems.map(item => item.id);
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -60,15 +61,15 @@ const Index = () => {
     // Advanced GSAP Animations
     const ctx = gsap.context(() => {
       // Section reveal animations
-      gsap.utils.toArray(".reveal-section").forEach((section: any) => {
+      gsap.utils.toArray(".reveal-section").forEach((section: Element) => {
         gsap.fromTo(
           section,
           { opacity: 0, y: 80 },
           {
             opacity: 1,
             y: 0,
-            duration: 1.2,
-            ease: "power2.out",
+            duration: ANIMATION_CONFIG.duration.slow,
+            ease: ANIMATION_CONFIG.ease.smooth,
             scrollTrigger: {
               trigger: section,
               start: "top 85%",
@@ -80,7 +81,7 @@ const Index = () => {
       });
 
       // Parallax effects
-      gsap.utils.toArray(".parallax-element").forEach((element: any) => {
+      gsap.utils.toArray(".parallax-element").forEach((element: Element) => {
         gsap.to(element, {
           yPercent: -50,
           ease: "none",
@@ -100,13 +101,13 @@ const Index = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: SCROLL_CONFIG.behavior });
     }
     setMobileMenuOpen(false);
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: SCROLL_CONFIG.behavior });
   };
 
   return (
@@ -134,7 +135,7 @@ const Index = () => {
         <div className="container mx-auto text-center">
           <div className="w-12 h-12 flex items-center justify-center bg-white  rounded-full mx-auto mb-4">
             <img
-              src={logo}
+              src={ASSETS.logo}
               alt="Erielí Lara Logo"
               className="w-full h-full object-contain bg-transparent"
             />
